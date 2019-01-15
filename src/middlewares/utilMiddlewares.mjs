@@ -16,7 +16,7 @@ export default class UtilMiddleware {
   static checkUserRole(allowedRoles) {
     return async (user, req, res, next) => {
       try {
-        const isAllowed = await allowedRoles.find(req => req === user.role);
+        const isAllowed = await allowedRoles.find(role => role === user.role);
         if(!isAllowed) {
           return res.status(401).json({
             message: "You are not authorized to perform this action"
